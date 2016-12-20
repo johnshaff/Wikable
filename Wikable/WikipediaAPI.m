@@ -10,7 +10,7 @@
 
 @interface WikipediaAPI ()
 
-
+//@property(strong, nonatomic) NSString *articleBody;
 
 @end
 
@@ -18,16 +18,17 @@
 @implementation WikipediaAPI
 
 NSString *baseURL = @"https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&titles=";
-
+NSString *articleBody = @"";
 // GRAB THE SEARCH BAR TEXT!!!
-NSString *searchTerm = @"iphone 7";
 
 
-+(void) searchWikipedia {
-    NSString *fixedTerm = [searchTerm stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
++(void) searchWikipediaWith:(NSString *)searchTerm beginTaskWithCallbackBlock:(NSString* (^)(void))callbackBlock {
+    NSString *passThrough = searchTerm;
+    NSString *fixedTerm = [passThrough stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
     NSString *fixedTermWithBaseURL = [baseURL stringByAppendingString:fixedTerm];
     NSURL *fullURL = [NSURL URLWithString:fixedTermWithBaseURL];
     
+
     NSLog(@"%@", fullURL);
 
 
@@ -43,6 +44,28 @@ NSString *searchTerm = @"iphone 7";
                                       error:&error];
                 NSLog(@"------JASON DATA BEGINS--->%@", json);
                 
+                NSDictionary *queryDictionary = [json objectForKey:@"query"];
+                NSLog(@"----QUERY DICTIONARY----->%@", queryDictionary);
+                
+                NSDictionary *pagesDictionary = [queryDictionary objectForKey:@"pages"];
+                NSLog(@"----PAGES DICTIONARY----->%@", pagesDictionary);
+                
+                NSArray *uniqueKeyArray;
+                uniqueKeyArray = pagesDictionary.allKeys;
+                NSLog(@"----UNIQUE ARRAY----->%@", uniqueKeyArray);
+                
+                
+                NSString *uniqueKey = uniqueKeyArray.firstObject;
+                NSLog(@"-----WOOOW SO HACKY------>%@", uniqueKey);
+
+                NSDictionary *articleDictionary = [pagesDictionary objectForKey:uniqueKey];
+                NSLog(@"-----ARTICLE DICTIONARY------>%@", articleDictionary);
+                
+                articleBody = [articleDictionary objectForKey:@"extract"];
+                NSLog(@"----ARTICLE BODY----->%@", articleBody);
+
+                
+                
                 if(error!=nil) {
                     NSLog(@"json error:%@", error);
                 }
@@ -50,8 +73,9 @@ NSString *searchTerm = @"iphone 7";
         }
 
     }];
+    
     [fetchWiki resume];
-
+    return articleBody;
 }
 
 

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ArticleBodyViewController">
             <connections>
                 <outlet property="bodyText" destination="MDO-RE-u2c" id="WyL-Ld-VVz"/>
+                <outlet property="searchBar" destination="gw7-Jn-3CD" id="odT-3q-Nek"/>
+                <outlet property="searchDisplayController" destination="I1Q-iX-U9b" id="sBp-Ee-TyN"/>
                 <outlet property="view" destination="uB1-Yr-3FQ" id="QUa-eK-Odx"/>
             </connections>
         </placeholder>
@@ -21,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MDO-RE-u2c">
-                    <rect key="frame" x="16" y="36" width="343" height="631"/>
+                    <rect key="frame" x="16" y="73" width="343" height="594"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <attributedString key="attributedText">
                         <fragment>
@@ -33,15 +35,30 @@
                     </attributedString>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <searchBar contentMode="redraw" placeholder="Search Wikipedia" translatesAutoresizingMaskIntoConstraints="NO" id="gw7-Jn-3CD">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="gw7-Jn-3CD" firstAttribute="top" secondItem="uB1-Yr-3FQ" secondAttribute="top" constant="20" id="0qX-en-2VZ"/>
                 <constraint firstAttribute="bottom" secondItem="MDO-RE-u2c" secondAttribute="bottom" id="B2z-Rc-LnW"/>
-                <constraint firstItem="MDO-RE-u2c" firstAttribute="top" secondItem="uB1-Yr-3FQ" secondAttribute="top" constant="36" id="TI9-h8-wr4"/>
+                <constraint firstAttribute="trailing" secondItem="gw7-Jn-3CD" secondAttribute="trailing" id="YZl-tC-kBu"/>
+                <constraint firstItem="gw7-Jn-3CD" firstAttribute="leading" secondItem="uB1-Yr-3FQ" secondAttribute="leading" id="ZAE-gk-e9j"/>
                 <constraint firstAttribute="trailing" secondItem="MDO-RE-u2c" secondAttribute="trailing" constant="16" id="g2q-Eb-hhO"/>
+                <constraint firstItem="MDO-RE-u2c" firstAttribute="top" secondItem="gw7-Jn-3CD" secondAttribute="bottom" constant="9" id="ruF-Pn-Og9"/>
                 <constraint firstItem="MDO-RE-u2c" firstAttribute="leading" secondItem="uB1-Yr-3FQ" secondAttribute="leading" constant="16" id="t6e-Cc-keX"/>
             </constraints>
             <point key="canvasLocation" x="-300.5" y="24.5"/>
         </view>
+        <searchDisplayController id="I1Q-iX-U9b">
+            <connections>
+                <outlet property="delegate" destination="-1" id="2Az-oc-E7G"/>
+                <outlet property="searchContentsController" destination="-1" id="x8y-FU-uSw"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="H3j-S2-cqm"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="DEN-yA-koU"/>
+            </connections>
+        </searchDisplayController>
     </objects>
 </document>

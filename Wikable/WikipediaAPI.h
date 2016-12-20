@@ -11,6 +11,6 @@
 @interface WikipediaAPI : NSObject
 
 
-+(void) searchWikipedia;
++(NSString *) searchWikipediaWith:(NSString *)searchTerm;
 
 @end

@@ -10,9 +10,11 @@
 #import "WikipediaAPI.h"
 #import "LoremIpsum.h"
 
-@interface ArticleBodyViewController ()
-@property (weak, nonatomic) IBOutlet UITextView *bodyText;
+@interface ArticleBodyViewController () <UISearchBarDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextView *bodyText;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) NSString *articleBody;
 
 @end
 
@@ -22,15 +24,17 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.searchBar.delegate = self;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(didChangePreferredContentSize:)
                                                  name:UIContentSizeCategoryDidChangeNotification
                                                object:nil];
 
-    self.bodyText.text = kLoremIpsum;
+//    self.bodyText.text = kLoremIpsum;
     self.bodyText.editable = NO;
-
-    [WikipediaAPI searchWikipedia];
+    
 
 }
 
@@ -46,6 +50,7 @@
 }
 
 
+
 - (void)configureView
 {
     NSLog(@"%@", [[UIApplication sharedApplication] preferredContentSizeCategory] );
@@ -53,6 +58,19 @@
 
     self.bodyText.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
+
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSString *searchTerm = searchBar.text;
+    NSLog(@"-----SEARCH TERM----->%@", searchTerm);
+    
+    
+    _articleBody = [WikipediaAPI searchWikipediaWith:searchTerm];
+    NSLog(@"----ARTICLE BODY----->%@", _articleBody);
+    self.bodyText.text = _articleBody;
+}
+
+
 
 -(void)dealloc
 {
