@@ -21,6 +21,7 @@
 
     
     [WikipediaAPI searchWikipedia];
+    
 
 
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
