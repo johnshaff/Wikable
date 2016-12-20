@@ -14,6 +14,12 @@
 		F23BB57E1E083F8E008907C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F23BB57C1E083F8E008907C1 /* main.m */; };
 		F23BB5801E083FAA008907C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F23BB57F1E083FAA008907C1 /* Assets.xcassets */; };
 		F23BB5831E083FB6008907C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F23BB5811E083FB6008907C1 /* LaunchScreen.storyboard */; };
+<<<<<<< HEAD
+=======
+		F23BB5871E0840F1008907C1 /* ArticleBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F23BB5851E0840F1008907C1 /* ArticleBodyViewController.m */; };
+		F23BB5881E0840F1008907C1 /* ArticleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F23BB5861E0840F1008907C1 /* ArticleView.xib */; };
+		F23BB58C1E086A5D008907C1 /* LoremIpsum.h in Sources */ = {isa = PBXBuildFile; fileRef = F23BB58B1E086A5D008907C1 /* LoremIpsum.h */; };
+>>>>>>> dd6f2d3bee3f422c2bd9f6cd2d7675662860ecfb
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,13 @@
 		F23BB57C1E083F8E008907C1 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
 		F23BB57F1E083FAA008907C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Views/Assets.xcassets; sourceTree = "<group>"; };
 		F23BB5821E083FB6008907C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Views/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
+		F23BB5841E0840F1008907C1 /* ArticleBodyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArticleBodyViewController.h; path = Controllers/ArticleBodyViewController.h; sourceTree = "<group>"; };
+		F23BB5851E0840F1008907C1 /* ArticleBodyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArticleBodyViewController.m; path = Controllers/ArticleBodyViewController.m; sourceTree = "<group>"; };
+		F23BB5861E0840F1008907C1 /* ArticleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ArticleView.xib; path = Controllers/ArticleView.xib; sourceTree = "<group>"; };
+		F23BB58B1E086A5D008907C1 /* LoremIpsum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoremIpsum.h; path = "Supporting Files/LoremIpsum.h"; sourceTree = "<group>"; };
+>>>>>>> dd6f2d3bee3f422c2bd9f6cd2d7675662860ecfb
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				F23BB57F1E083FAA008907C1 /* Assets.xcassets */,
+				F23BB5861E0840F1008907C1 /* ArticleView.xib */,
 				F23BB5811E083FB6008907C1 /* LaunchScreen.storyboard */,
 			);
 			name = Views;
@@ -157,6 +171,12 @@
 		F23BB5761E083F6E008907C1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+=======
+				F23BB5841E0840F1008907C1 /* ArticleBodyViewController.h */,
+				F23BB5851E0840F1008907C1 /* ArticleBodyViewController.m */,
+				F23BB58B1E086A5D008907C1 /* LoremIpsum.h */,
+>>>>>>> dd6f2d3bee3f422c2bd9f6cd2d7675662860ecfb
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -270,6 +290,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
+=======
+				F23BB5881E0840F1008907C1 /* ArticleView.xib in Resources */,
+>>>>>>> dd6f2d3bee3f422c2bd9f6cd2d7675662860ecfb
 				F23BB5831E083FB6008907C1 /* LaunchScreen.storyboard in Resources */,
 				F23BB5801E083FAA008907C1 /* Assets.xcassets in Resources */,
 			);
@@ -296,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F23BB58C1E086A5D008907C1 /* LoremIpsum.h in Sources */,
 				F23BB57E1E083F8E008907C1 /* main.m in Sources */,
 				F23BB57D1E083F8E008907C1 /* AppDelegate.m in Sources */,
 				5088803D1E085B420054F91C /* WikipediaAPI.m in Sources */,
@@ -439,6 +464,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KUNVAN4RR6;
 				INFOPLIST_FILE = Wikable/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.BastardizedProductions.Wikable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -451,6 +477,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KUNVAN4RR6;
 				INFOPLIST_FILE = Wikable/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.BastardizedProductions.Wikable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
