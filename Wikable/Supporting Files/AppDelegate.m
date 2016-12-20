@@ -23,9 +23,9 @@
     [WikipediaAPI searchWikipedia];
 
 
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[ArticleBodyViewController alloc] initWithNibName:@"ArticleView" bundle:nil];
-    [self.window makeKeyAndVisible];
+//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    self.window.rootViewController = [[ArticleBodyViewController alloc] initWithNibName:@"ArticleView" bundle:nil];
+//    [self.window makeKeyAndVisible];
 
     return YES;
 }
