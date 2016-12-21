@@ -64,10 +64,10 @@
     NSString *searchTerm = searchBar.text;
     NSLog(@"-----SEARCH TERM----->%@", searchTerm);
     
-    [WikipediaAPI searchWikipediaWith:searchTerm withCompletion:^(NSString *articleBody) {
-        
-        self.bodyText.text = articleBody;
-    }];
+//    [WikipediaAPI searchWikipediaWith:searchTerm withCompletion:^(NSString *articleBody) {
+    
+//        self.bodyText.text = articleBody;
+//    }];
 }
 
 

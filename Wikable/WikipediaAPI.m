@@ -19,11 +19,11 @@
 @implementation WikipediaAPI
 
 NSString *baseURL = @"https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&titles=";
-NSString *articleBody = @"";
+NSString *wikiText = @"";
 
 
 
-+(void) searchWikipediaWith:(NSString *)searchTerm withCompletion:(articleCompletion)completion {
++(void) searchWikipediaWith:(NSString *)searchTerm callback:(createArticleCompletion)createArticle {
     
     NSString *passThrough = searchTerm;
     NSString *fixedTerm = [passThrough stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
@@ -61,11 +61,11 @@ NSString *articleBody = @"";
                 NSDictionary *articleDictionary = [pagesDictionary objectForKey:uniqueKey];
                 NSLog(@"-----ARTICLE DICTIONARY------>%@", articleDictionary);
                 
-                articleBody = [articleDictionary objectForKey:@"extract"];
-                NSLog(@"----ARTICLE BODY----->%@", articleBody);
+                wikiText = [articleDictionary objectForKey:@"extract"];
+                NSLog(@"----ARTICLE BODY----->%@", wikiText);
 
                 [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-                    completion(articleBody);
+                    createArticleCompletion(wikiText);
                 }];
                 
                 if(error!=nil) {

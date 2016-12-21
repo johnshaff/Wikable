@@ -8,14 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^articleCompletion)(NSString * articleBody);
 
+typedef void(^createArticleCompletion)(NSString * wikiText);
 
 @interface WikipediaAPI : NSObject
 
-
 +(NSString *) searchWikipediaWith:(NSString *)searchTerm;
-+(void) searchWikipediaWith:(NSString *)searchTerm withCompletion:(articleCompletion)completion;
+
++(void) searchWikipediaWith:(NSString *)searchTerm callback:(createArticleCompletion)createArticle;
+
 
 
 @end
