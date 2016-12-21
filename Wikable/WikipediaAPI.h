@@ -8,9 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^articleCompletion)(NSString * articleBody);
+
+
 @interface WikipediaAPI : NSObject
 
 
 +(NSString *) searchWikipediaWith:(NSString *)searchTerm;
++(void) searchWikipediaWith:(NSString *)searchTerm withCompletion:(articleCompletion)completion;
+
 
 @end

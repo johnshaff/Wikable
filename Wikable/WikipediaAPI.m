@@ -8,6 +8,7 @@
 
 #import "WikipediaAPI.h"
 
+
 @interface WikipediaAPI ()
 
 //@property(strong, nonatomic) NSString *articleBody;
@@ -19,18 +20,17 @@
 
 NSString *baseURL = @"https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&titles=";
 NSString *articleBody = @"";
-// GRAB THE SEARCH BAR TEXT!!!
 
 
-+(void) searchWikipediaWith:(NSString *)searchTerm beginTaskWithCallbackBlock:(NSString* (^)(void))callbackBlock {
+
++(void) searchWikipediaWith:(NSString *)searchTerm withCompletion:(articleCompletion)completion {
+    
     NSString *passThrough = searchTerm;
     NSString *fixedTerm = [passThrough stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
     NSString *fixedTermWithBaseURL = [baseURL stringByAppendingString:fixedTerm];
     NSURL *fullURL = [NSURL URLWithString:fixedTermWithBaseURL];
-    
 
     NSLog(@"%@", fullURL);
-
 
     NSURLSessionDataTask *fetchWiki = [[NSURLSession sharedSession] dataTaskWithURL:fullURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
@@ -42,6 +42,7 @@ NSString *articleBody = @"";
                                       JSONObjectWithData:data
                                       options:NSJSONReadingMutableContainers
                                       error:&error];
+                
                 NSLog(@"------JASON DATA BEGINS--->%@", json);
                 
                 NSDictionary *queryDictionary = [json objectForKey:@"query"];
@@ -54,7 +55,6 @@ NSString *articleBody = @"";
                 uniqueKeyArray = pagesDictionary.allKeys;
                 NSLog(@"----UNIQUE ARRAY----->%@", uniqueKeyArray);
                 
-                
                 NSString *uniqueKey = uniqueKeyArray.firstObject;
                 NSLog(@"-----WOOOW SO HACKY------>%@", uniqueKey);
 
@@ -64,7 +64,9 @@ NSString *articleBody = @"";
                 articleBody = [articleDictionary objectForKey:@"extract"];
                 NSLog(@"----ARTICLE BODY----->%@", articleBody);
 
-                
+                [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+                    completion(articleBody);
+                }];
                 
                 if(error!=nil) {
                     NSLog(@"json error:%@", error);
@@ -75,7 +77,6 @@ NSString *articleBody = @"";
     }];
     
     [fetchWiki resume];
-    return articleBody;
 }
 
 
